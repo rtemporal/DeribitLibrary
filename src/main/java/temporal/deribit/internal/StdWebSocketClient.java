@@ -83,12 +83,22 @@ public class StdWebSocketClient
 
 	public void	send(String	message)
 	{
-		webSocket.sendText(message, true).join();
+		WebSocket	ws = webSocket;
+
+		if (ws == null)
+			throw new IllegalStateException("WebSocket connection is closed");
+
+		ws.sendText(message, true).join();
 	}
 
 	public void	send(ByteBuffer	data)
 	{
-		webSocket.sendBinary(data, true).join();
+		WebSocket	ws = webSocket;
+
+		if (ws == null)
+			throw new IllegalStateException("WebSocket connection is closed");
+
+		ws.sendBinary(data, true).join();
 	}
 
 	private class StdWebSocketListener implements Listener

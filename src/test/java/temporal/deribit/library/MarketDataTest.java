@@ -25,6 +25,7 @@ import temporal.deribit.dto.IndexPriceName;
 import temporal.deribit.dto.Instrument;
 import temporal.deribit.dto.Kind;
 import temporal.deribit.dto.LastTrades;
+import temporal.deribit.dto.MarkPricePoint;
 import temporal.deribit.dto.OrderBook;
 import temporal.deribit.dto.Settlements;
 import temporal.deribit.dto.TradeVolume;
@@ -32,6 +33,7 @@ import temporal.deribit.dto.TradingViewChartData;
 import temporal.deribit.dto.VolatilityIndexData;
 import temporal.deribit.notifications.ticker;
 import temporal.deribit.params.get_apr_history;
+import tools.jackson.core.type.TypeReference;
 import temporal.deribit.params.get_book_summary_by_currency;
 import temporal.deribit.params.get_book_summary_by_instrument;
 import temporal.deribit.params.get_contract_size;
@@ -160,7 +162,7 @@ class MarketDataTest
 		try
 		{
 			get_expirations	params = new get_expirations(ExchangeMessengerTestUtil.authorization, Currency.BTC, Kind.future, null);
-			Object	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_expirations(params));
+			List<String>	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_expirations(new TypeReference<>() {}, params));
 			System.out.println("get_expirations: " + result);
 		}
 		catch(Exception	e)
@@ -190,8 +192,8 @@ class MarketDataTest
 		try
 		{
 			get_index_chart_data	params = new get_index_chart_data(ExchangeMessengerTestUtil.authorization, IndexName.btc_usdc.toString(), "1h");
-			Object[][]	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_index_chart_data(params));
-			System.out.println("get_index_chart_data: " + result.length + " entries");
+			List<MarkPricePoint>	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_index_chart_data(params));
+			System.out.println("get_index_chart_data: " + result.size() + " entries");
 		}
 		catch(Exception	e)
 		{
@@ -420,8 +422,8 @@ class MarketDataTest
 			calendar.add(Calendar.HOUR, -1);
 			long	start = calendar.getTimeInMillis();
 			get_mark_price_history	params = new get_mark_price_history(ExchangeMessengerTestUtil.authorization, ExchangeMessengerTestUtil.BTC_PERPETUAL, start, end, null, null);
-			Object[][]	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_mark_price_history(params));
-			System.out.println("get_mark_price_history: " + result.length + " entries");
+			List<MarkPricePoint>	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_mark_price_history(params));
+			System.out.println("get_mark_price_history: " + result.size() + " entries");
 		}
 		catch(Exception	e)
 		{

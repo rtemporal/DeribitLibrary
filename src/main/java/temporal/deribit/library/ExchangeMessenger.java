@@ -16,7 +16,15 @@ import temporal.deribit.dto.AnnualPercentageRates;
 import temporal.deribit.dto.ApiKey;
 import temporal.deribit.dto.Authorization;
 import temporal.deribit.dto.Beneficiary;
+import temporal.deribit.dto.BlockRfq;
+import temporal.deribit.dto.BlockRfqTrades;
+import temporal.deribit.dto.BlockRfqUserInfo;
+import temporal.deribit.dto.BlockTrade;
+import temporal.deribit.dto.BlockTradeRequest;
+import temporal.deribit.dto.BlockTradeSignature;
 import temporal.deribit.dto.BookSummary;
+import temporal.deribit.dto.BrokerClient;
+import temporal.deribit.dto.CancelOnDisconnect;
 import temporal.deribit.dto.Combo;
 import temporal.deribit.dto.ContractSize;
 import temporal.deribit.dto.CurrencyDetails;
@@ -25,6 +33,7 @@ import temporal.deribit.dto.DeliveryPrices;
 import temporal.deribit.dto.Deposit;
 import temporal.deribit.dto.DepositAddress;
 import temporal.deribit.dto.Deposits;
+import temporal.deribit.dto.FundingChartData;
 import temporal.deribit.dto.Hello;
 import temporal.deribit.dto.HistoricalFundingRate;
 import temporal.deribit.dto.HistoricalVolatility;
@@ -35,8 +44,10 @@ import temporal.deribit.dto.LastTrades;
 import temporal.deribit.dto.LegPrices;
 import temporal.deribit.dto.Margin;
 import temporal.deribit.dto.MarginModelChange;
+import temporal.deribit.dto.MarkPricePoint;
 import temporal.deribit.dto.MarketMakerProtectionConfig;
 import temporal.deribit.dto.MarketMakerProtectionStatus;
+import temporal.deribit.dto.MassQuoteResponse;
 import temporal.deribit.dto.Order;
 import temporal.deribit.dto.OrderBook;
 import temporal.deribit.dto.OrderMargin;
@@ -45,6 +56,7 @@ import temporal.deribit.dto.Orders;
 import temporal.deribit.dto.Position;
 import temporal.deribit.dto.PositionClose;
 import temporal.deribit.dto.PositionMove;
+import temporal.deribit.dto.Response;
 import temporal.deribit.dto.RewardEligibility;
 import temporal.deribit.dto.Settlements;
 import temporal.deribit.dto.Status;
@@ -56,15 +68,6 @@ import temporal.deribit.dto.TransactionLogs;
 import temporal.deribit.dto.Transfer;
 import temporal.deribit.dto.Transfers;
 import temporal.deribit.dto.UserLock;
-import temporal.deribit.dto.BlockRfq;
-import temporal.deribit.dto.BlockRfqTrades;
-import temporal.deribit.dto.BlockRfqUserInfo;
-import temporal.deribit.dto.BlockTrade;
-import temporal.deribit.dto.BlockTradeRequest;
-import temporal.deribit.dto.BlockTradeSignature;
-import temporal.deribit.dto.BrokerClient;
-import temporal.deribit.dto.FundingChartData;
-import temporal.deribit.dto.MassQuoteResponse;
 import temporal.deribit.dto.VolatilityIndexData;
 import temporal.deribit.dto.Withdraw;
 import temporal.deribit.dto.Withdraws;
@@ -116,15 +119,11 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<Void>	logout(logout	params)
+	public void	logout(logout	params)
 	{
 		Request<logout>	request = new Request<>("private/logout", params);
-		FutureResponse<Void>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
 
-		messageWriter.put(futureResponse);
 		messageWriter.post(request);
-
-		return futureResponse;
 	}
 
 	/*
@@ -664,10 +663,23 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<Object>	get_expirations(get_expirations	params)
+	/**
+	 * Retrieves available expiration timestamps. The return type varies:
+	 * <ul>
+	 *   <li>{@code List<String>} when a specific {@code kind} is requested</li>
+	 *   <li>{@code Map<String, List<String>>} when {@code kind = any}</li>
+	 * </ul>
+	 *
+	 * @param <T>    the expected result type
+	 * @param type   type reference for deserialization, e.g.
+	 *               {@code new TypeReference<Response<Map<String, List<String>>>>() {}}
+	 * @param params the request parameters
+	 * @return a future with the expirations data
+	 */
+	public <T> Future<T>	get_expirations(TypeReference<Response<T>>	type, get_expirations	params)
 	{
 		Request<get_expirations>	request = new Request<>("public/get_expirations", params);
-		FutureResponse<Object>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
+		FutureResponse<T>	futureResponse = new FutureResponse<>(request, type);
 
 		messageReader.put(futureResponse);
 		messageWriter.post(request);
@@ -818,10 +830,10 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<Object[][]>	get_mark_price_history(get_mark_price_history	params)
+	public Future<List<MarkPricePoint>>	get_mark_price_history(get_mark_price_history	params)
 	{
 		Request<get_mark_price_history>	request = new Request<>("public/get_mark_price_history", params);
-		FutureResponse<Object[][]>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
+		FutureResponse<List<MarkPricePoint>>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
 
 		messageReader.put(futureResponse);
 		messageWriter.post(request);
@@ -917,10 +929,10 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<Object[][]>	get_index_chart_data(get_index_chart_data	params)
+	public Future<List<MarkPricePoint>>	get_index_chart_data(get_index_chart_data	params)
 	{
 		Request<get_index_chart_data>	request = new Request<>("public/get_index_chart_data", params);
-		FutureResponse<Object[][]>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
+		FutureResponse<List<MarkPricePoint>>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
 
 		messageReader.put(futureResponse);
 		messageWriter.post(request);
@@ -953,10 +965,10 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<Object>	get_cancel_on_disconnect(get_cancel_on_disconnect	params)
+	public Future<CancelOnDisconnect>	get_cancel_on_disconnect(get_cancel_on_disconnect	params)
 	{
 		Request<get_cancel_on_disconnect>	request = new Request<>("private/get_cancel_on_disconnect", params);
-		FutureResponse<Object>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
+		FutureResponse<CancelOnDisconnect>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
 
 		messageReader.put(futureResponse);
 		messageWriter.post(request);

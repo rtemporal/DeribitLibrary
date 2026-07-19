@@ -64,7 +64,7 @@ class AuthTest
 		try
 		{
 			logout	params = new logout(ExchangeMessengerTestUtil.authorization, null);
-			ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.logout(params));
+			ExchangeMessengerTestUtil.exchangeMessenger.logout(params);
 			System.out.println("logout: ok");
 		}
 		catch(Exception	e)

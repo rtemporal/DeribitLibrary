@@ -1,15 +1,11 @@
 package temporal.deribit.library;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import temporal.deribit.dto.Response;
 import temporal.deribit.params.Request;
-import temporal.deribit.params.logout;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -19,7 +15,6 @@ public class MessageWriter implements Runnable
 	{
 		this.textMessenger = textMessenger;
 		inputQueue = new LinkedBlockingQueue<>();
-		futureResponseMap = new HashMap<>();
 		objectMapper = JsonMapper.builder().changeDefaultPropertyInclusion
 		(
 			_ -> JsonInclude.Value.construct(JsonInclude.Include.NON_NULL, JsonInclude.Include.NON_NULL)
@@ -65,6 +60,7 @@ public class MessageWriter implements Runnable
 		catch (InterruptedException	e)
 		{
 			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -73,21 +69,8 @@ public class MessageWriter implements Runnable
 		return inputQueue.isEmpty();
 	}
 
-	public void	put(FutureResponse<?>	futureResponse)
-	{
-		futureResponseMap.put(futureResponse.getId(), futureResponse);
-	}
-
 	public void	post(Request<?>	request)
 	{
-		if (request.method().equals("private/logout"))
-		{
-			logout	params = (logout)request.params();
-
-			if (params.authorization() == null)
-				System.out.println("params.authorization() == null");
-		}
-
 		inputQueue.add(request);
 	}
 
@@ -101,22 +84,11 @@ public class MessageWriter implements Runnable
 		String	message = objectMapper.writeValueAsString(request);
 
 		textMessenger.send(request.method(), message);
-
-		int	id = request.id();
-		FutureResponse<?>	futureResponse = futureResponseMap.remove(id);
-
-		if (futureResponse != null)
-		{
-			Response<Void>	response = new Response<>(id, null);
-
-			futureResponse.setResponse(response);
-		}
 	}
 
 	private TextMessenger	textMessenger;
 	private BlockingQueue<Request<?>>	inputQueue;
 	private ObjectMapper	objectMapper;
-	private Map<Integer,FutureResponse<?>>	futureResponseMap;
 	private Thread	thread;
 	private static final Request<?>	STOP = new Request<>(null, null);
 }

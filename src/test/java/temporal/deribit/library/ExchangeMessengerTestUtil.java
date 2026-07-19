@@ -33,9 +33,9 @@ public class ExchangeMessengerTestUtil
 		exchangeSocket = new ExchangeSocket(wss, messageReader);
 		messageWriter = new MessageWriter(exchangeSocket);
 		exchangeMessenger = new ExchangeMessenger(messageReader, messageWriter);
+		exchangeSocket.connectBlocking();
 		messageReader.start();
 		messageWriter.start();
-		exchangeSocket.connectBlocking();
 		authorization = get(exchangeMessenger.auth(deribitKey.sign("ExchangeMessengerTest")));
 	}
 
@@ -44,19 +44,11 @@ public class ExchangeMessengerTestUtil
 		System.out.println("begin teardownAll");
 		try
 		{
-			get(exchangeMessenger.logout(new logout(authorization, null)));
+			exchangeMessenger.logout(new logout(authorization, null));
 		}
 		catch(Exception	e)
 		{
 			System.out.println("logout during teardown: " + e.getMessage());
-		}
-		try
-		{
-			exchangeSocket.closeBlocking();
-		}
-		catch(Exception	e)
-		{
-			System.out.println("close socket during teardown: " + e.getMessage());
 		}
 		try
 		{
@@ -73,6 +65,14 @@ public class ExchangeMessengerTestUtil
 		catch(Exception	e)
 		{
 			System.out.println("stop reader during teardown: " + e.getMessage());
+		}
+		try
+		{
+			exchangeSocket.closeBlocking();
+		}
+		catch(Exception	e)
+		{
+			System.out.println("close socket during teardown: " + e.getMessage());
 		}
 		System.out.println("end teardownAll");
 	}

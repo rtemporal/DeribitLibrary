@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import temporal.deribit.dto.CancelOnDisconnect;
 import temporal.deribit.params.disable_cancel_on_disconnect;
 import temporal.deribit.params.enable_cancel_on_disconnect;
 import temporal.deribit.params.get_cancel_on_disconnect;
@@ -87,7 +88,7 @@ class SessionManagementTest
 		try
 		{
 			get_cancel_on_disconnect	params = new get_cancel_on_disconnect(ExchangeMessengerTestUtil.authorization, get_cancel_on_disconnect.Scope.connection);
-			Object	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_cancel_on_disconnect(params));
+			CancelOnDisconnect	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.get_cancel_on_disconnect(params));
 			System.out.println("get_cancel_on_disconnect: " + result);
 		}
 		catch(Exception	e)
