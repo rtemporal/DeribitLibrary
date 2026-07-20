@@ -7,5 +7,6 @@ public record Transfers
 	Transfer[]	data,
 	int	count
 )
-implements Serializable {
+implements Serializable
+{
 }

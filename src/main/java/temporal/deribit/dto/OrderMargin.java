@@ -9,5 +9,6 @@ public record OrderMargin
 		BigDecimal	initial_margin,
 		Currency	initial_margin_currency
 )
-implements Serializable {
+implements Serializable
+{
 }

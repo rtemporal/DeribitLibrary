@@ -3,7 +3,7 @@ package temporal.deribit.dto;
 import java.util.List;
 import java.io.Serializable;
 
-public record MassQuoteResponse
+public record MassQuote
 (
 	List<Order>	orders,
 	List<Trade>	trades,
@@ -12,7 +12,8 @@ public record MassQuoteResponse
 	Integer	pending_requests_count,
 	List<PendingRequest>	pending_requests
 )
-implements Serializable {
+implements Serializable
+{
 	public record Error
 	(
 		String	instrument_name,
@@ -21,7 +22,8 @@ implements Serializable {
 		String	message,
 		Object	error
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record PendingRequest
@@ -29,6 +31,7 @@ implements Serializable {
 		String	instrument_name,
 		String	side
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

@@ -7,5 +7,6 @@ public record Orders
 	Order[]	entries,
 	String	continuation
 )
-implements Serializable {
+implements Serializable
+{
 }

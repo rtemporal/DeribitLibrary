@@ -22,12 +22,14 @@ public record CurrencyDetails
 	BigDecimal	network_fee,
 	Currency	network_currency
 )
-implements Serializable {
+implements Serializable
+{
 	public record WithdrawalPriority
 	(
 		String	name,
 		float	value
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

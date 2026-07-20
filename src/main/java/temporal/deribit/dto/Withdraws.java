@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 public record Withdraws
 (
-	Deposit[]	data,
+	Withdraw[]	data,
 	int	count
 )
-implements Serializable {
+implements Serializable
+{
 }

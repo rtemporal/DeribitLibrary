@@ -17,7 +17,8 @@ public record CustodyAccount
 	String	pending_withdrawal_address,
 	String	deposit_address
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Name
 	{
 		copper,

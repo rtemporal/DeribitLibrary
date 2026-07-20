@@ -24,7 +24,8 @@ public record AccountSumaries
 	Boolean	receive_notifications,
 	AccountSummary[]	summaries
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		main,

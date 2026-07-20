@@ -9,5 +9,6 @@ public record MarketMakerProtectionStatus
 	String	mmp_group,
 	Boolean	block_rfq
 )
-implements Serializable {
+implements Serializable
+{
 }

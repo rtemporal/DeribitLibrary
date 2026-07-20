@@ -8,5 +8,6 @@ public record BlockTradeSignature
 	long	nonce,
 	long	timestamp
 )
-implements Serializable {
+implements Serializable
+{
 }

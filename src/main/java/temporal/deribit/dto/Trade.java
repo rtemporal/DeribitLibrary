@@ -49,7 +49,8 @@ public record Trade
 	int	user_id,
 	boolean	self_trade
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Advanced
 	{
 		usd,
@@ -69,7 +70,8 @@ implements Serializable {
 		BigDecimal	fee,
 		Integer	user_id
 	)
-	implements Serializable {	
+	implements Serializable
+{	
 	}
 
 	public enum State

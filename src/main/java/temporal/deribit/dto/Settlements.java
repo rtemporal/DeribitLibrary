@@ -7,5 +7,6 @@ public record Settlements
 	String	continuation,
 	Settlement[]	settlements
 )
-implements Serializable {
+implements Serializable
+{
 }

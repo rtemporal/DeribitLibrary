@@ -8,5 +8,6 @@ public record UserLock
 	boolean	enabled,
 	String	message
 )
-implements Serializable {
+implements Serializable
+{
 }

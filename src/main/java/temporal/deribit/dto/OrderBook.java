@@ -33,7 +33,8 @@ public record OrderBook
 	BigDecimal	delivery_price,
 	BigDecimal	settlement_price
 )
-implements Serializable {
+implements Serializable
+{
 	public enum State
 	{
 		open,
@@ -53,6 +54,7 @@ implements Serializable {
 		BigDecimal	price_change,
 		BigDecimal	volume_usd
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

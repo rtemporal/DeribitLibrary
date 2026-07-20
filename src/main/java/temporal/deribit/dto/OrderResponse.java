@@ -7,5 +7,6 @@ public record OrderResponse
 	Order	order,
 	Trade[]	trades
 )
-implements Serializable {
+implements Serializable
+{
 }

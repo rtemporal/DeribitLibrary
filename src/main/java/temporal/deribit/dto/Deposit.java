@@ -17,7 +17,8 @@ public record Deposit
 	ClearanceState	clearance_state,
 	String	refund_transaction_id
 )
-implements Serializable {
+implements Serializable
+{
 	public enum State
 	{
 		pending,

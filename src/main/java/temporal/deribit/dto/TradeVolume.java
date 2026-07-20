@@ -19,5 +19,6 @@ public record TradeVolume
 	BigDecimal	futures_volume_30d,
 	BigDecimal	spot_volume_30d
 )
-implements Serializable {
+implements Serializable
+{
 }

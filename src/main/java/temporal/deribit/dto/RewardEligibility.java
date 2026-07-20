@@ -8,7 +8,8 @@ public record RewardEligibility
 	Status	eligibility_status,
 	BigDecimal	apr_sma7
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Status
 	{
 		 eligible,

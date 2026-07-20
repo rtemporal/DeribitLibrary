@@ -9,5 +9,6 @@ public record MarginModelState
 	BigDecimal	initial_margin_rate,
 	BigDecimal	available_balance
 )
-implements Serializable {
+implements Serializable
+{
 }

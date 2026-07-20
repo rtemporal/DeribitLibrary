@@ -7,5 +7,6 @@ public record PositionClose
 	Order	order,
 	Trade[]	trades
 )
-implements Serializable {
+implements Serializable
+{
 }

@@ -17,7 +17,8 @@ public record Transfer
 	long	created_timestamp,
 	long	updated_timestamp
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		user,

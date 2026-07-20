@@ -20,5 +20,6 @@ public record Beneficiary
 	String	beneficiary_last_name,
 	String	beneficiary_company_name
 )
-implements Serializable {
+implements Serializable
+{
 }

@@ -17,7 +17,8 @@ public record Withdraw
 	int	id,
 	short	priority
 )
-implements Serializable {
+implements Serializable
+{
 	public enum State
 	{
 		unconfirmed,

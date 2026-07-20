@@ -24,7 +24,8 @@ public record Address
 	Boolean	requires_confirmation,
 	Boolean	requires_confirmation_change
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		transfer,

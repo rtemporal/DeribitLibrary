@@ -8,5 +8,6 @@ public record HistoricalVolatility
 	long	timestamp,
 	BigDecimal	value
 )
-implements Serializable {
+implements Serializable
+{
 }

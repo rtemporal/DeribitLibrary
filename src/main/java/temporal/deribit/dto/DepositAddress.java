@@ -15,7 +15,8 @@ public record DepositAddress
 	boolean	requires_confirmation_change,
 	boolean	info_required
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		deposit

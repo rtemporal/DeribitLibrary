@@ -47,7 +47,7 @@ import temporal.deribit.dto.MarginModelChange;
 import temporal.deribit.dto.MarkPricePoint;
 import temporal.deribit.dto.MarketMakerProtectionConfig;
 import temporal.deribit.dto.MarketMakerProtectionStatus;
-import temporal.deribit.dto.MassQuoteResponse;
+import temporal.deribit.dto.MassQuote;
 import temporal.deribit.dto.Order;
 import temporal.deribit.dto.OrderBook;
 import temporal.deribit.dto.OrderMargin;
@@ -1513,10 +1513,10 @@ public class ExchangeMessenger
 		return futureResponse;
 	}
 
-	public Future<MassQuoteResponse>	mass_quote(mass_quote	params)
+	public Future<MassQuote>	mass_quote(mass_quote	params)
 	{
 		Request<mass_quote>	request = new Request<>("private/mass_quote", params);
-		FutureResponse<MassQuoteResponse>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
+		FutureResponse<MassQuote>	futureResponse = new FutureResponse<>(request, new TypeReference<>() {});
 
 		messageReader.put(futureResponse);
 		messageWriter.post(request);

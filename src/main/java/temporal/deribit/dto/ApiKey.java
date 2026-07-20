@@ -15,13 +15,14 @@ public record ApiKey
 	String	client_secret,
 	String	client_id,
 	String	name,
-	Object	enabled_features,
+	String[]	enabled_features,
 	
 	/**
 	 * Fields not documented.
 	 */
-	Object	ip_whitelist,
+	String[]	ip_whitelist,
 	String	public_key
 )
-implements Serializable {
+implements Serializable
+{
 }

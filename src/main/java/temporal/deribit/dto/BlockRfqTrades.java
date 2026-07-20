@@ -2,6 +2,7 @@ package temporal.deribit.dto;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.io.Serializable;
 
 public record BlockRfqTrades
@@ -9,7 +10,8 @@ public record BlockRfqTrades
 	List<BlockRfqTrade>	block_rfqs,
 	String	continuation
 )
-implements Serializable {
+implements Serializable
+{
 	public record BlockRfqTrade
 	(
 		Integer	id,
@@ -20,10 +22,11 @@ implements Serializable {
 		List<Leg>	legs,
 		String	combo_id,
 		BlockRfq.Hedge	hedge,
-		Object	index_prices,
+		Map<String, BigDecimal>	index_prices,
 		List<Trade>	trades
 	)
-implements Serializable {
+implements Serializable
+{
 		public record Leg
 		(
 			String	instrument_name,
@@ -31,7 +34,8 @@ implements Serializable {
 			Integer	ratio,
 			BigDecimal	price
 		)
-implements Serializable {
+implements Serializable
+{
 		}
 	}
 }

@@ -7,5 +7,6 @@ public record Deposits
 	Deposit[]	data,
 	int	count
 )
-implements Serializable {
+implements Serializable
+{
 }

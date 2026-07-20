@@ -10,12 +10,14 @@ public record AffiliateProgram
 	String	link,
 	Received	received
 )
-implements Serializable {
+implements Serializable
+{
 	public record Received
 	(
 		BigDecimal	eth,
 		BigDecimal	btc
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

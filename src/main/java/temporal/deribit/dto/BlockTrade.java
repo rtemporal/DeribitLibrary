@@ -12,5 +12,6 @@ public record BlockTrade
 	String	broker_code,
 	String	broker_name
 )
-implements Serializable {
+implements Serializable
+{
 }

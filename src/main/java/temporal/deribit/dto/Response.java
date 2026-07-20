@@ -13,7 +13,8 @@ public record Response<T>
 	long usDiff,
 	boolean	testnet
 )
-implements Serializable {
+implements Serializable
+{
 	public Response(int	id, T	result)
 	{
 		this("2.0", id, result, null, 0, 0, 0, false);
@@ -25,6 +26,7 @@ implements Serializable {
 		String	message,
 		Object	data
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

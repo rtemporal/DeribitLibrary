@@ -8,5 +8,6 @@ public record AccountDetail
 	Position[]	positions,
 	Order[]	open_orders
 )
-implements Serializable {
+implements Serializable
+{
 }

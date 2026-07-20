@@ -12,7 +12,8 @@ public record AccessLog
 	Action	log,
 	Object	data
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Action
 	{
 		changed_email,

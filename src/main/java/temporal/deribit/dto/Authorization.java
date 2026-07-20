@@ -15,7 +15,8 @@ public record Authorization
 	String	state,
 	TokenType	token_type
 )
-implements Serializable {
+implements Serializable
+{
 	public enum TokenType
 	{
 		bearer

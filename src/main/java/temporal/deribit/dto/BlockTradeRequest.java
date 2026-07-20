@@ -13,14 +13,16 @@ public record BlockTradeRequest
 	Hedge	hedge,
 	String	state
 )
-implements Serializable {
+implements Serializable
+{
 	public record Leg
 	(
 		String	instrument_name,
 		BigDecimal	amount,
 		Direction	direction
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record Hedge
@@ -30,6 +32,7 @@ implements Serializable {
 		BigDecimal	price,
 		BigDecimal	amount
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

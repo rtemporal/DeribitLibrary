@@ -32,5 +32,6 @@ public record Position
 	Float	vega
 )
 
-implements Serializable {
+implements Serializable
+{
 }

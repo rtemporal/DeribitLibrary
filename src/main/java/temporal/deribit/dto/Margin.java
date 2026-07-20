@@ -10,5 +10,6 @@ public record Margin
 	BigDecimal	min_price,
 	BigDecimal	sell
 )
-implements Serializable {
+implements Serializable
+{
 }

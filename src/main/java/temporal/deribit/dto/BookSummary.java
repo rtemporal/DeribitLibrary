@@ -29,5 +29,6 @@ public record BookSummary
 	BigDecimal	underlying_price,
 	BigDecimal	price_change
 )
-implements Serializable {
+implements Serializable
+{
 }

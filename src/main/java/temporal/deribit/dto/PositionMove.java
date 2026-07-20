@@ -12,5 +12,6 @@ public record PositionMove
 	Integer	source_uid,
 	Integer	target_uid
 )
-implements Serializable {
+implements Serializable
+{
 }

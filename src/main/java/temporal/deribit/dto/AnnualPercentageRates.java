@@ -7,5 +7,6 @@ public record AnnualPercentageRates
 	AnnualPercentageRate[]	data,
 	String	continuation
 )
-implements Serializable {
+implements Serializable
+{
 }

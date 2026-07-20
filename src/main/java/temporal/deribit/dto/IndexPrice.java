@@ -8,5 +8,6 @@ public record IndexPrice
 	BigDecimal	estimated_delivery_price,
 	BigDecimal	index_price
 )
-implements Serializable {
+implements Serializable
+{
 }

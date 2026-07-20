@@ -2,19 +2,20 @@ package temporal.deribit.dto;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.util.Map;
 
 public record AccountSummary
 (
 	BigDecimal	options_pl,
 	BigDecimal	projected_delta_total,
-	Object	options_theta_map,
+	Map<String, BigDecimal>	options_theta_map,
 	Boolean	has_non_block_chain_equity,
 	BigDecimal	total_margin_balance_usd,
 	Limits	limits,
 	String	type,
 	BigDecimal	total_delta_total_usd,
 	BigDecimal	available_withdrawal_funds,
-	Object	estimated_liquidation_ratio_map,
+	Map<String, BigDecimal>	estimated_liquidation_ratio_map,
 	BigDecimal	options_session_rpl,
 	BigDecimal	futures_session_rpl,
 	BigDecimal	total_pl,
@@ -23,18 +24,18 @@ public record AccountSummary
 	BigDecimal	additional_reserve,
 	BigDecimal	options_session_upl,
 	boolean	cross_collateral_enabled,
-	Object	delta_total_map,
+	Map<String, BigDecimal>	delta_total_map,
 	Integer	id,
 	BigDecimal	options_value,
 	Long	creation_timestamp,
 	String	email,
-	Object	options_vega_map,
+	Map<String, BigDecimal>	options_vega_map,
 	BigDecimal	maintenance_margin,
 	Boolean	mmp_enabled,
 	BigDecimal	futures_session_upl,
 	boolean	portfolio_margining_enabled,
 	BigDecimal	futures_pl,
-	Object	options_gamma_map,
+	Map<String, BigDecimal>	options_gamma_map,
 	Currency	currency,
 	BigDecimal	options_delta,
 	BigDecimal	initial_margin,
@@ -80,14 +81,16 @@ public record AccountSummary
 	BigDecimal	close_out_margin,
 	Boolean	direct_access_enabled
 )
-implements Serializable {
+implements Serializable
+{
 	public record Limits
 	(
 		boolean	limits_per_currency,
 		MatchingEngine	matching_engine,
 		RateLimit	non_matching_engine
 	)
-implements Serializable {	
+implements Serializable
+{	
 	}
 
 	public record MatchingEngine
@@ -100,14 +103,16 @@ implements Serializable {
 		RateLimit	spot,
 		Trading	trading
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record Trading
 	(
 		RateLimit	total
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record RateLimit
@@ -115,7 +120,8 @@ implements Serializable {
 		short	rate,
 		short	burst
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record Fee
@@ -124,7 +130,8 @@ implements Serializable {
 		String	kind,
 		Object	value
 	)
-implements Serializable {	
+implements Serializable
+{	
 	}
 
 	public record ChangeMarginModelApiLimit
@@ -132,6 +139,7 @@ implements Serializable {
 		int	timeframe,
 		short	rate
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

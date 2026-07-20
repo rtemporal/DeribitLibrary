@@ -1,6 +1,7 @@
 package temporal.deribit.dto;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public record Account
 (
@@ -18,7 +19,7 @@ public record Account
 	String	proof_id,
 	String	proof_id_signature,
 	Boolean	login_enabled,
-	Object	portfolio,
+	Map<String, CurrencyPortfolio>	portfolio,
 
 	/**
 	 * Non documented fields.
@@ -27,7 +28,8 @@ public record Account
 	Object	trading_products_details,
 	Object	referrals_count
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		main,

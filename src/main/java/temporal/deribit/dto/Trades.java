@@ -7,5 +7,6 @@ public record Trades
 	Trade[]	trades,
 	boolean	has_more
 )
-implements Serializable {
+implements Serializable
+{
 }

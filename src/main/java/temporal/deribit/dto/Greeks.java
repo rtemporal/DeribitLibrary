@@ -10,5 +10,6 @@ public record Greeks
 	Float	theta,
 	Float	vega
 )
-implements Serializable {
+implements Serializable
+{
 }

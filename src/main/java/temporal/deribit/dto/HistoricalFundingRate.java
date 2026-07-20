@@ -11,5 +11,6 @@ public record HistoricalFundingRate
 	BigDecimal	interest_1h,
 	BigDecimal	interest_8h
 )
-implements Serializable {
+implements Serializable
+{
 }

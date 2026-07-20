@@ -8,7 +8,8 @@ public record IndexPriceName
 	Boolean	future_combo_creation_enabled,
 	Boolean	option_combo_creation_enabled
 )
-implements Serializable {
+implements Serializable
+{
 	public IndexPriceName(String	name)
 	{
 		this(name, null, null);

@@ -21,7 +21,8 @@ public record Settlement
 	BigDecimal	session_tax_rate,
 	BigDecimal	socialized
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		settlement,

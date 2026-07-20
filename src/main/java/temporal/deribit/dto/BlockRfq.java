@@ -31,14 +31,16 @@ public record BlockRfq
 	TradeTrigger	trade_trigger,
 	List<TradeAllocation>	trade_allocations
 )
-implements Serializable {
+implements Serializable
+{
 	public record Leg
 	(
 		String	instrument_name,
 		Direction	direction,
 		Integer	ratio
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record Quote
@@ -50,7 +52,8 @@ implements Serializable {
 		String	execution_instruction,
 		Long	expires_at
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record Hedge
@@ -60,7 +63,8 @@ implements Serializable {
 		BigDecimal	price,
 		BigDecimal	amount
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record TradeTrigger
@@ -70,7 +74,8 @@ implements Serializable {
 		Direction	direction,
 		String	cancel_reason
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 
 	public record TradeAllocation
@@ -79,14 +84,16 @@ implements Serializable {
 		ClientInfo	client_info,
 		BigDecimal	amount
 	)
-implements Serializable {
+implements Serializable
+{
 		public record ClientInfo
 		(
 			Integer	client_id,
 			Integer	client_link_id,
 			String	name
 		)
-implements Serializable {
+implements Serializable
+{
 		}
 	}
 }

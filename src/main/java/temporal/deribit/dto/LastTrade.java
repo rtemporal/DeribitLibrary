@@ -24,7 +24,8 @@ public record LastTrade
 	BigDecimal	combo_trade_id,
 	Integer	block_rfq_id
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Liquidation
 	{
 		M,

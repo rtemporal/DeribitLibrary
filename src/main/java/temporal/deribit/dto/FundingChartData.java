@@ -10,13 +10,15 @@ public record FundingChartData
 	BigDecimal	interest_8h,
 	List<DataPoint>	data
 )
-implements Serializable {
+implements Serializable
+{
 	public record DataPoint
 	(
 		long	timestamp,
 		BigDecimal	index_price,
 		BigDecimal	interest_8h
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

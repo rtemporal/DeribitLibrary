@@ -8,5 +8,6 @@ public record AnnualPercentageRate
 	long	day,
 	BigDecimal	apr
 )
-implements Serializable {
+implements Serializable
+{
 }

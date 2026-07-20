@@ -7,5 +7,6 @@ public record TransactionLogs
 	Integer	continuation,
 	TransactionLog[]	logs
 )
-implements Serializable {
+implements Serializable
+{
 }

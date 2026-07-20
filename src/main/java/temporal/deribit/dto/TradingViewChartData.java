@@ -14,7 +14,8 @@ public record TradingViewChartData
 	BigDecimal	[]high,
 	BigDecimal	[]low
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Status
 	{
 		ok,

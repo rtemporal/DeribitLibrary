@@ -13,7 +13,7 @@ import temporal.deribit.dto.IndexName;
 import temporal.deribit.dto.Margin;
 import temporal.deribit.dto.MarketMakerProtectionConfig;
 import temporal.deribit.dto.MarketMakerProtectionStatus;
-import temporal.deribit.dto.MassQuoteResponse;
+import temporal.deribit.dto.MassQuote;
 import temporal.deribit.dto.Order;
 import temporal.deribit.dto.OrderMargin;
 import temporal.deribit.dto.OrderResponse;
@@ -225,7 +225,7 @@ class TradingTest
 			QuoteSide	bid = new QuoteSide(BigDecimal.valueOf(43700), BigDecimal.valueOf(10), null, null);
 			Quote	quote = new Quote(ExchangeMessengerTestUtil.BTC_PERPETUAL, "futures", ask, bid);
 			mass_quote	params = new mass_quote(ExchangeMessengerTestUtil.authorization, "1", "default", List.of(quote), null, true, null);
-			MassQuoteResponse	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.mass_quote(params));
+			MassQuote	result = ExchangeMessengerTestUtil.get(ExchangeMessengerTestUtil.exchangeMessenger.mass_quote(params));
 			System.out.println("mass_quote: " + (result.orders() != null ? result.orders().size() + " orders" : result));
 		}
 		catch(Exception	e)

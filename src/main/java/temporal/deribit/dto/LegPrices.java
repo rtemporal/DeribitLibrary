@@ -8,7 +8,8 @@ public record LegPrices
 	LegPrice[]	legs,
 	BigDecimal	amount
 )
-implements Serializable {
+implements Serializable
+{
 	public record LegPrice
 	(
 		Integer	ratio,
@@ -16,6 +17,7 @@ implements Serializable {
 		Direction	direction,
 		BigDecimal	price
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

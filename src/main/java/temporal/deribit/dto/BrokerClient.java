@@ -7,5 +7,6 @@ public record BrokerClient
 	Integer	id,
 	String	name
 )
-implements Serializable {
+implements Serializable
+{
 }

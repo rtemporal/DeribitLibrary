@@ -16,5 +16,6 @@ public record MarketMakerProtectionConfig
 	Boolean	block_rfq,
 	Integer	trade_count_limit
 )
-implements Serializable {
+implements Serializable
+{
 }

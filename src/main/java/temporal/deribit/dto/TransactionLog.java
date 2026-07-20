@@ -42,7 +42,8 @@ public record TransactionLog
 	BigDecimal	total_interest_pl,
 	BigDecimal	contracts
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		trade,

@@ -8,5 +8,6 @@ public record MarginModelChange
 	MarginModelState	new_state,
 	Currency	currency
 )
-implements Serializable {
+implements Serializable
+{
 }

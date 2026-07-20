@@ -32,7 +32,8 @@ public record Instrument
 	BigDecimal	tick_size,
 	TickSizeStep[]	tick_size_steps
 )
-implements Serializable {
+implements Serializable
+{
 	public enum Type
 	{
 		linear,
@@ -50,6 +51,7 @@ implements Serializable {
 		BigDecimal	above_price,
 		BigDecimal	tick_size
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

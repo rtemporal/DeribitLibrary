@@ -12,7 +12,8 @@ public record Combo
 	long	creation_timestamp,
 	Leg[]	legs
 )
-implements Serializable {
+implements Serializable
+{
 	public enum State
 	{
 		active,
@@ -24,6 +25,7 @@ implements Serializable {
 		String	instrument_name,
 		BigDecimal	amount
 	)
-implements Serializable {
+implements Serializable
+{
 	}
 }

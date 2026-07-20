@@ -11,5 +11,6 @@ public record BlockRfqUserInfo
 	Integer	total_completed_trades,
 	BigDecimal	volume_period
 )
-implements Serializable {
+implements Serializable
+{
 }

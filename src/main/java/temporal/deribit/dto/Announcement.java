@@ -11,5 +11,6 @@ public record Announcement
 	String	title,
 	Boolean	confirmation
 )
-implements Serializable {
+implements Serializable
+{
 }
