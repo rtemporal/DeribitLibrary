@@ -74,10 +74,7 @@ public class FutureResponse<T> implements Future<T>
 
 	public synchronized T	get(long	timeout, TimeUnit	unit) throws InterruptedException, ExecutionException, TimeoutException
 	{
-		if (!TimeUnit.MILLISECONDS.equals(unit))
-			throw new UnsupportedOperationException();
-
-		long	deadline = System.currentTimeMillis() + timeout;
+		long	deadline = System.currentTimeMillis() + unit.toMillis(timeout);
 
 		while (response == null && error == null)
 		{

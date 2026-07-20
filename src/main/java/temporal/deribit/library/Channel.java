@@ -159,10 +159,7 @@ public class Channel<T> implements ObservableValue<Params<T>>, Future<Params<T>>
 
 	public synchronized Params<T>	get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException
 	{
-		if (!TimeUnit.MILLISECONDS.equals(unit))
-			throw new UnsupportedOperationException();
-
-		long	deadline = System.currentTimeMillis() + timeout;
+		long	deadline = System.currentTimeMillis() + unit.toMillis(timeout);
 
 		while (data == null && error == null)
 		{
