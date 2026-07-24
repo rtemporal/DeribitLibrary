@@ -11,3 +11,4 @@ target/
 .vscode/
 .DS_Store
 .opencode/
+jars.txt

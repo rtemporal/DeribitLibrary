@@ -149,7 +149,7 @@ implements Serializable, OrderI
 			BigDecimal	lhsVolume = lhs.volume();
 			BigDecimal	rhsVolume = rhs.volume();
 
-			return (int) Math.signum(lhsVolume.subtract(rhsVolume).doubleValue());
+			return lhsVolume.subtract(rhsVolume).signum();
 		}
 	}
 
